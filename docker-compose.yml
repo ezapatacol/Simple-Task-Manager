@@ -8,6 +8,7 @@ services:
     container_name: laravel-app
     ports:
       - "9000:9000"
+      - "5173:5173"
     volumes:
       - .:/var/www
     depends_on:
@@ -37,6 +38,21 @@ services:
       - "3307:3306"
     volumes:
       - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: laravel-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
+    ports:
+      - "127.0.0.1:8081:80" # only expose this temporarily if needed
+    networks:
+      - default
 
 volumes:
   dbdata:
