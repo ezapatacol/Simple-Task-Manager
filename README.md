@@ -1,4 +1,4 @@
-# 📝 Simple Task Manager MVP (Starter Tier)
+# Simple Task Manager MVP (Starter Tier)
 
 A lightweight Laravel-based MVP demonstrating **essential SaaS features**:  
 - User Authentication
